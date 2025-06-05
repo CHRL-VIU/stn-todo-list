@@ -56,11 +56,6 @@ st.dataframe(
     hide_index=True
 )
 
-# Additional note below the table
-st.markdown("""
-<small><i style='color: grey;'>Note: Changes entered into the fields below must be confirmed by clicking the 'Save Changes' button at the bottom of the app.</i></small>
-""", unsafe_allow_html=True)
-
 # Download table button
 csv_data = st.session_state.edited_data.to_csv(index=False).encode('utf-8')
 st.download_button(
@@ -69,6 +64,11 @@ st.download_button(
     file_name="stn_todo_list.csv",
     mime="text/csv"
 )
+
+# Additional note below the table
+st.markdown("""
+<small><i style='color: red;'>Note: Changes entered into the fields below must be confirmed by clicking the 'Save Changes' button at the bottom of the app.</i></small>
+""", unsafe_allow_html=True)
 
 # Allow multiline text entry for each station
 for i, row in st.session_state.edited_data.iterrows():
